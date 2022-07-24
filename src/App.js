@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import { useQuery } from "react-query";
+import axios from "axios";
+import Character from "./components/Character";
+import { QueryClientProvider, QueryClient } from "react-query";
 function App() {
+  const queryclient = new QueryClient();
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="container">
+        <h1>Rick And Morty</h1>
+        <QueryClientProvider client={queryclient}>
+          <Character />
+        </QueryClientProvider>
+      </div>
     </div>
   );
 }
